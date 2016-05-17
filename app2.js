@@ -3,10 +3,10 @@ var hours = ['6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:0
 
 var pikePlace = {
   locationName: 'Pike Place Market',
-  minCustomersHour: 12,
-  maxCustomersHour: 28,
-  avgCupsPerCustomer: 3.2,
-  avgPoundsPerCustomer: 0.03,
+  minCustomersHour: 14,
+  maxCustomersHour: 35,
+  avgCupsPerCustomer: 1.2,
+  avgPoundsPerCustomer: 0.34,
   poundsPerCup: 16,
   beansPerHour: [], // = beansNeededForCupsPerHour + poundPackagesPerHour
   customersPerHour: [],
@@ -73,14 +73,14 @@ var pikePlace = {
       //give that <li> content
       //append the <li> to the <ul>
       var liElement = document.createElement('li');
-      var litotalCustomers = document.createElement('li');
+      var liTotal = document.createElement('li');
       liElement.textContent = (hours[i] + ' ' + parseFloat(this.beansPerHour[i].toFixed(1)) + ' lbs [' + this.customersPerHour[i] + ' Customers, ' + this.cupsPerHour[i] + ' cups ' + '(' + parseFloat(this.beansNeededForCupsPerHour[i].toFixed (1)) + ' lbs) ' + this.poundPackagesPerHour[i] + ' lbs to-go] ');
       ulElement.appendChild(liElement);
+
 // 'Total customers at Pike Place Market: ' + dailyCustomerTotal
 // 'Total cups sold at Pike Place Market: ' + dailyCupsTotal
 // 'Total pound packages sold at Pike Place Market: ' + dailyPoundPackagesTotal
 // 'Total pounds of beans needed at Pike Place Market: ' + dailyBeansNeeded
-
     }
   }
 };
@@ -89,10 +89,10 @@ console.log(pikePlace);
 
 var capitolHill = {
   locationName: 'Capitol Hill',
-  minCustomersHour: 14,
-  maxCustomersHour: 35,
-  avgCupsPerCustomer: 1.2,
-  avgPoundsPerCustomer: 0.34,
+  minCustomersHour: 12,
+  maxCustomersHour: 28,
+  avgCupsPerCustomer: 3.2,
+  avgPoundsPerCustomer: 0.03  ,
   poundsPerCup: 16,
   beansPerHour: [], // = beansNeededForCupsPerHour + poundPackagesPerHour
   customersPerHour: [],
