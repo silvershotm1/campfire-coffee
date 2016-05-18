@@ -111,6 +111,3 @@ for(i = 0; i < hours.length; i++) {
 
 // Render method from the object literals and makee TD with it instaed of LI.
 //Change the render method so it can take a TR as a parameter.
-//}
-
-//for (var i = 0; i < )
