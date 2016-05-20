@@ -124,7 +124,7 @@ Kiosk.prototype.createRows = function() {
   tdElement.textContent = this.storeLoc;
   trElement.appendChild(tdElement);
 
-//Daily beans total rounded to one decimal and append data
+//Daily beans total rounded to two decimal and append data
   var tdElement = document.createElement('td');
   tdElement.textContent = parseFloat(this.dailyBeansNeeded.toFixed(2));
   trElement.appendChild(tdElement);
@@ -156,15 +156,18 @@ function createTotalsRow() {
   tdElement.textContent = allKiosksTotals;
   trElement.appendChild(tdElement);
 
-  var totalsData = 0;
+  // var totalsData = 0;
   //Loop for hours (headers)
   for (var i = 0; i < hours.length; i++){
+    totalsData = 0;
     //Loop for location (rows)
     for (var j = 0; j < allKiosks.length; j++) {
-      totalsData += parseFloat((allKiosks[j].beansPerHour[i]).toFixed(2));//why does rounding not work?
+      totalsData += parseFloat((allKiosks[j].beansPerHour[i]).toFixed(2));
+      console.log(allKiosks[j].beansPerHour[i]);
     }
+    console.log(totalsData);
     var tdElement = document.createElement('td');
-    tdElement.textContent = totalsData;
+    tdElement.textContent = parseFloat(totalsData.toFixed(2));
     trElement.appendChild(tdElement);
   }
   beansTable.appendChild(trElement);
@@ -186,7 +189,7 @@ southLake.render();
 seaTac.render();
 createTotalsRow();
 
-//Copied from first table - Update for baristas
+//Copied from first table - Update for baristas/////////////////
 
 //Call function
 Kiosk.prototype.renderB = function(){
@@ -267,14 +270,15 @@ function createTotalsRowBaristas() {
   tdElement.textContent = allKiosksTotals;
   trElement.appendChild(tdElement);
 
-  var totalsData = 0;
   //Loop for hours (headers)
   for (var i = 0; i < hours.length; i++){
     //Loop for location (rows)
+    totalsData = 0;
     for (var j = 0; j < allKiosks.length; j++) {
-  //    totalsData += Math.round(allKiosks[j].baristasNeededPerHour[i]); //HELP! I'm not sure why this doesn't work!
+      // totalsData += Math.round(allKiosks[j].baristasNeededPerHour[i]); //HELP! I'm not sure why this doesn't work!
       totalsData += Math.ceil(((allKiosks[j].cupsPerHour[i] * 2) + (allKiosks[j].poundPackagesPerHour[i] * 2)) / 60);
     }
+    console.log(totalsData);
     var tdElement = document.createElement('td');
     tdElement.textContent = totalsData;
     trElement.appendChild(tdElement);
@@ -282,12 +286,13 @@ function createTotalsRowBaristas() {
   baristasTable.appendChild(trElement);
 }
 
-//Variables per location
-var pikePlace = new Kiosk('Pike Place Market',14, 35, 0.34, 1.2);
-var capHill = new Kiosk('Capitol Hill', 12, 28, .03, 3.2);
-var publicLib = new Kiosk('Seattle Public Library', 9, 45, .02, 2.6);
-var southLake = new Kiosk('South Lake Union', 5, 18, .04, 1.3);
-var seaTac = new Kiosk('Sea-Tac Airport', 28, 44, .41, 1.1);
+//Variables per location   DO NOT NEED THIS AT ALL
+
+// var pikePlace = new Kiosk('Pike Place Market',14, 35, 0.34, 1.2);
+// var capHill = new Kiosk('Capitol Hill', 12, 28, .03, 3.2);
+// var publicLib = new Kiosk('Seattle Public Library', 9, 45, .02, 2.6);
+// var southLake = new Kiosk('South Lake Union', 5, 18, .04, 1.3);
+// var seaTac = new Kiosk('Sea-Tac Airport', 28, 44, .41, 1.1);
 
 //Definition of rows
 createBaristasHeader();
@@ -297,3 +302,24 @@ publicLib.renderB();
 southLake.renderB();
 seaTac.renderB();
 createTotalsRowBaristas();
+
+// ------------------- FORM DATA STARTED----------------------------
+//
+//
+//---------------------FORM CONSTRUCTOR------------------------------
+// for (var i = 0; i < allKiosks.length; i++){
+//   allKiosks[i].renderB();
+//   console.log();
+// };
+//
+//---------------------FORM VARS FOR DOM ACCESS----------------------
+var chatForm = document.getElementById('chat-form');
+
+function handleNewLocationSubmit(event){
+  console.log(event);
+  event.preventDefault(); // Prevents page from reloading
+
+  if (!event.target.kiosk.value || !event.target.mincusthour.value || !event.target.maxcusthour.value || !event.target.avgpounds.value || !event.target.avgcups.value) {
+    return alert('Fields cannot be empty!');
+  }
+};

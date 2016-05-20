@@ -13,7 +13,31 @@
     <h1>Barista Hours Needed By Location Each Day</h1>
     <table id="baristas-table"></table>
 
-    <script src="app2.js"></script>
-    <!-- <script src="backups/formulastart.js"></script> -->
+    <p>
+    <!-- FORM STARTS HERE -->
+      <form id="kiosk-form">
+        <fieldset>
+          <legend>Add Kiosk Form</legend> <!-- Name of Form --->
+
+          <label for="kiosk">Location: </label> <!-- Location of Store/Kiosk -->
+          <input name="kiosk" type="text" />    <!-- Name of Location of Kiosk -->
+
+          <label for="mincusthour">Minimum Customers: </label>
+          <input name="mincusthour" type="text" />
+
+          <label for="maxcusthour">Maximum Customers: </label>
+          <input name="maxcusthour" type="text" />
+
+          <label for="avgpounds">Average Pounds: </label>
+          <input name="avgpounds" type="text" />
+
+          <label for="avgcups">Average Cups: </label>
+          <input name="avgcups" type="text" />
+
+          <button id="add" type="submit"> Add Kiosk </button> <!-- Submit Button -->
+
+        </fieldset>
+      </form>
+      <script src="app2.js"></script>
   </body>
 </html>
