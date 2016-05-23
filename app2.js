@@ -189,7 +189,7 @@ southLake.render();
 seaTac.render();
 createTotalsRow();
 
-//Copied from first table - Update for baristas/////////////////
+//Barista Table
 
 //Call function
 Kiosk.prototype.renderB = function(){
@@ -286,13 +286,6 @@ function createTotalsRowBaristas() {
   baristasTable.appendChild(trElement);
 }
 
-//Variables per location   DO NOT NEED THIS AT ALL
-
-// var pikePlace = new Kiosk('Pike Place Market',14, 35, 0.34, 1.2);
-// var capHill = new Kiosk('Capitol Hill', 12, 28, .03, 3.2);
-// var publicLib = new Kiosk('Seattle Public Library', 9, 45, .02, 2.6);
-// var southLake = new Kiosk('South Lake Union', 5, 18, .04, 1.3);
-// var seaTac = new Kiosk('Sea-Tac Airport', 28, 44, .41, 1.1);
 
 //Definition of rows
 createBaristasHeader();
@@ -307,19 +300,41 @@ createTotalsRowBaristas();
 //
 //
 //---------------------FORM CONSTRUCTOR------------------------------
-// for (var i = 0; i < allKiosks.length; i++){
-//   allKiosks[i].renderB();
-//   console.log();
 // };
 //
 //---------------------FORM VARS FOR DOM ACCESS----------------------
-var chatForm = document.getElementById('chat-form');
+var handleNewKioskSubmit = document.getElementById('kiosk-form');
+// //
+// function handleNewLocationSubmit(event){
 
-function handleNewLocationSubmit(event){
-  console.log(event);
+// // var handleNewLocationSubmit = document.getElementById('kiosk-form');
+
+handleNewKioskSubmit.addEventListener('submit', function(event) {
   event.preventDefault(); // Prevents page from reloading
 
-  if (!event.target.kiosk.value || !event.target.mincusthour.value || !event.target.maxcusthour.value || !event.target.avgpounds.value || !event.target.avgcups.value) {
+  var addNewKiosk = event.target.newkiosk.value;
+  var addNewMin = parseFloat(event.target.newmincusthour.value);
+  var addNewMax = parseFloat(event.target.newmaxcusthour.value);
+  var addNewPounds = parseFloat(event.target.newavgpounds.value);
+  var addNewCups = parseFloat(event.target.newavgcups.value);
+
+  if (!event.target.newkiosk.value || !event.target.newmincusthour.value || !event.target.newmaxcusthour.value || !event.target.newavgpounds.value || !event.target.newavgcups.value) {
     return alert('Fields cannot be empty!');
+  };
+  var newKiosk = new Kiosk(addNewKiosk,addNewMin,addNewMax,addNewPounds,addNewCups);
+  Kiosk.prototype.render = function(){
+    this.calcCustomersPerHour(this.minCustHr, this.maxCustHr);
+    this.calcCupsPerHour();
+    this.calcBeansPerCupsPerHour();
+    this.calcPoundsPerHour();
+    this.calcBeansPerHour();
+    this.createRows();
+    // for (var i = 0; i < allKiosks.length; i++){
+    //   allKiosks[i].render();
+    //   console.log();
+
+    beansTable.innerHTML = '';
+    baristasTable.innerHTML = '';
   }
-};
+  // };
+});
