@@ -7,37 +7,39 @@
   </head>
 
   <body>
+    <!-- FORM STARTS HERE -->
+    <form id="kiosk-form">
+      <fieldset>
+        <legend>Add Kiosk Form</legend> <!-- Name of Form --->
+
+        <label for="kiosk">Location: </label> <!-- Location of Store/Kiosk -->
+        <input name="newkiosk" type="text" />    <!-- Name of Location of Kiosk -->
+
+        <label for="mincusthour">Minimum Customers: </label>
+        <input name="newmincusthour" type="text" />
+
+        <label for="maxcusthour">Maximum Customers: </label>
+        <input name="newmaxcusthour" type="text" />
+
+        <label for="avgpounds">Average Pounds: </label>
+        <input name="newavgpounds" type="text" />
+
+        <label for="avgcups">Average Cups: </label>
+        <input name="newavgcups" type="text" />
+
+        <button id="add" type="submit"> Add Kiosk </button> <!-- Submit Button -->
+
+      </fieldset>
+    </form>
+
+    <p></p>
+
     <h1>Beans Needed By Location Each Day</h1>
     <table id="beans-table"></table>
 
     <h1>Barista Hours Needed By Location Each Day</h1>
     <table id="baristas-table"></table>
 
-    <p>
-    <!-- FORM STARTS HERE -->
-      <form id="kiosk-form">
-        <fieldset>
-          <legend>Add Kiosk Form</legend> <!-- Name of Form --->
-
-          <label for="kiosk">Location: </label> <!-- Location of Store/Kiosk -->
-          <input name="newkiosk" type="text" />    <!-- Name of Location of Kiosk -->
-
-          <label for="mincusthour">Minimum Customers: </label>
-          <input name="newmincusthour" type="text" />
-
-          <label for="maxcusthour">Maximum Customers: </label>
-          <input name="newmaxcusthour" type="text" />
-
-          <label for="avgpounds">Average Pounds: </label>
-          <input name="newavgpounds" type="text" />
-
-          <label for="avgcups">Average Cups: </label>
-          <input name="newavgcups" type="text" />
-
-          <button id="add" type="submit"> Add Kiosk </button> <!-- Submit Button -->
-
-        </fieldset>
-      </form>
       <script src="app2.js"></script>
   </body>
 </html>

@@ -199,7 +199,7 @@ Kiosk.prototype.renderB = function(){
   this.calcPoundsPerHour();
   this.calcBeansPerHour();
   this.calcBaristasNeededPerHour();//added baristas
-  this.createRows();
+  this.createRowsBaristas();
 };
 
 //Name of table and html id
@@ -232,7 +232,7 @@ function createBaristasHeader(){
 }
 // -----------CREATE STORE LOC ROWS ----------------
 //Create rows for storeLoc and append data
-Kiosk.prototype.createRows = function() {
+Kiosk.prototype.createRowsBaristas = function() {
   var trElement = document.createElement('tr');
   var tdElement = document.createElement('td');
   tdElement.textContent = this.storeLoc;
@@ -285,8 +285,6 @@ function createTotalsRowBaristas() {
   }
   baristasTable.appendChild(trElement);
 }
-
-
 //Definition of rows
 createBaristasHeader();
 pikePlace.renderB();
@@ -296,12 +294,6 @@ southLake.renderB();
 seaTac.renderB();
 createTotalsRowBaristas();
 
-// ------------------- FORM DATA STARTED----------------------------
-//
-//
-//---------------------FORM CONSTRUCTOR------------------------------
-// };
-//
 //---------------------FORM VARS FOR DOM ACCESS----------------------
 var handleNewKioskSubmit = document.getElementById('kiosk-form');
 // //
@@ -322,19 +314,7 @@ handleNewKioskSubmit.addEventListener('submit', function(event) {
     return alert('Fields cannot be empty!');
   };
   var newKiosk = new Kiosk(addNewKiosk,addNewMin,addNewMax,addNewPounds,addNewCups);
-  Kiosk.prototype.render = function(){
-    this.calcCustomersPerHour(this.minCustHr, this.maxCustHr);
-    this.calcCupsPerHour();
-    this.calcBeansPerCupsPerHour();
-    this.calcPoundsPerHour();
-    this.calcBeansPerHour();
-    this.createRows();
-    // for (var i = 0; i < allKiosks.length; i++){
-    //   allKiosks[i].render();
-    //   console.log();
+  newKiosk.render();
+  newKiosk.renderB();
 
-    beansTable.innerHTML = '';
-    baristasTable.innerHTML = '';
-  }
-  // };
 });

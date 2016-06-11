@@ -9,14 +9,26 @@ h1 {
   text-align: center;
   text-decoration: underline;
 }
-div#pics {
+div.pics {
   text-align: right;
   background-color: silver;
   display:flex;
   justify-content: space-around;
 }
 
-img {
+div.box2 {
+  display:flex;
+  align-items:flex-start;
+}
+
+img.pics {
   width:300px;
   height:200px;
+}
+
+img.campfire {
+display:flex;
+align-items: flex-start;
+width:300px;
+height:250px;
 }
